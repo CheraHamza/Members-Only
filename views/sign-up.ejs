@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign up</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/x-icon" href="images/favicon.svg">
+  <script src="js/signup.js" defer></script>
+</head>
+
+<body class="signup">
+  <header class="signup--header">
+    <h1><a href="/">Social</a></h1>
+  </header>
+  <section>
+    <div class="welcome-wrapper">
+      <div class="text">
+        <h1>Welcome to Social</h1>
+        <p>Where conversations matter, connections feel real, and your voice actually counts.</p>
+      </div>
+      <img src="/images/illustration.png" alt="">
+    </div>
+    <div class="form-wrapper">
+      <h1>SIGN UP</h1>
+      <form action="/signup" method="post">
+        <div class="group-wrapper">
+          <div class="required-group">
+            <div class="form-group">
+              <label for="firstname">FIRST NAME</label>
+              <div class="input-wrapper">
+                <input value="<%= locals.previousValues && locals.previousValues.firstname || '' %>" id="firstname" name="firstname" type="text" required>
+                <% if (locals.errors && errors.firstname) { %>
+                <span class="error-message">
+                  <%= errors.firstname[0]%>
+                </span>
+                <% } %>
+              </div>
+
+
+            </div>
+            <div class="form-group">
+              <label for="lastname">LAST NAME</label>
+              <div class="input-wrapper">
+                <input value="<%= locals.previousValues && locals.previousValues.lastname || '' %>" id="lastname" name="lastname" type="text" required>
+                <% if (locals.errors && errors.lastname) { %>
+                <span class="error-message">
+                  <%= errors.lastname[0]%>
+                </span>
+                <% } %>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">EMAIL</label>
+              <div class="input-wrapper">
+                <input value="<%= locals.previousValues && locals.previousValues.email || '' %>" id="email" name="email" type="email" required>
+                <% if (locals.errors && errors.email) { %>
+                <span class="error-message">
+                  <%= errors.email[0]%>
+                </span>
+                <% } %>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="password">PASSWORD</label>
+              <div class="input-wrapper">
+                <input value="<%= locals.previousValues && locals.previousValues.password || '' %>" id="password" name="password" type="password" required>
+                <% if (locals.errors && errors.password) { %>
+                <span class="error-message">
+                  <%= errors.password[0]%>
+                </span>
+                <% } %>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="confirmPassword">CONFIRM PASSWORD</label>
+              <div class="input-wrapper">
+                <input value="<%= locals.previousValues && locals.previousValues.confirmPassword || '' %>" id="confirmPassword" name="confirmPassword" type="password" required>
+                <% if (locals.errors && errors.confirmPassword) { %>
+                <span class="error-message">
+                  <%= errors.confirmPassword[0]%>
+                </span>
+                <% } %>
+              </div>
+            </div>
+          </div>
+
+          <div class="optional-group">
+            <div class="form-group">
+              <div class="admin-toggle">
+                <h4>ADMIN PRIVILEGES</h4>
+                <label class="switch">
+                  <input <%= locals.previousValues && locals.previousValues.adminToggle === 'on' ? 'checked' : '' %> type="checkbox" id="adminToggle" name="adminToggle">
+                  <span class="slider round"></span>
+                </label>
+              </div>
+            </div>
+            <div class="form-group" id="adminGroup">
+              <label for="admin">ENTER SECRET ADMIN CODE</label>
+              <div class="input-wrapper">
+                <input value="<%= locals.previousValues && locals.previousValues.admin || '' %>" id="admin" name="admin" type="text">
+                <% if (locals.errors && errors.admin) { %>
+                <span class="error-message">
+                  <%= errors.admin[0]%>
+                </span>
+                <% } %>
+              </div>
+
+            </div>
+
+            <div class="form-group">
+              <div class="membership-toggle">
+                <h4>SPECIAL MEMBERSHIP</h4>
+                <label class="switch">
+                  <input <%= locals.previousValues && locals.previousValues.membershipToggle === 'on' ? 'checked' : '' %> type="checkbox" id="membershipToggle" name="membershipToggle">
+                  <span class="slider round"></span>
+                </label>
+              </div>
+            </div>
+            <div class="form-group" id="membershipGroup">
+              <div>
+                <label for="membership">ENTER SECRET MEMBERSHIP CODE</label>
+                <div class="input-wrapper">
+                  <input value="<%= locals.previousValues && locals.previousValues.membership || '' %>" id="membership" name="membership" type="text">
+                  <% if (locals.errors && errors.membership) { %>
+                  <span class="error-message">
+                    <%= errors.membership[0]%>
+                  </span>
+                  <% } %>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit">Create Account</button>
+        <p class="login-prompt">Already have an account? <a href="/login">Log In</a></p>
+      </form>
+    </div>
+  </section>
+
+</body>
+
+</html>

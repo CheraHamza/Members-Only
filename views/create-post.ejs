@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create post</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/x-icon" href="images/favicon.svg">
+</head>
+
+<body class="createPost">
+  <%- include('partials/header') %>
+  <section>
+    <div>
+      <h1>CREATE POST</h1>
+      <form action="/post" method="post">
+        <div class="form-group">
+          <div class="input-wrapper">
+            <input value="<%= locals.previousValues && locals.previousValues.title || '' %>" id="title" name="title" type="text" placeholder="Title" required>
+            <% if (locals.errors && errors.title) { %>
+            <span class="error-message">
+              <%= errors.title[0]%>
+            </span>
+            <% } %>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="input-wrapper">
+            <textarea name="content" id="content" placeholder="What's on your mind?" rows="10" required><%= locals.previousValues && locals.previousValues.content || "" %></textarea>
+            <% if (locals.errors && errors.content) { %>
+            <span class="error-message">
+              <%= errors.content[0]%>
+            </span>
+            <% } %>
+          </div>
+        </div>
+        <button class="submit" type="submit">Post</button>
+      </form>
+    </div>
+
+  </section>
+</body>
+
+</html>

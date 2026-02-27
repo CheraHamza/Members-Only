@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log in</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/x-icon" href="images/favicon.svg">
+</head>
+
+<body class="login">
+  <header class="login--header">
+    <h1><a href="/">Social</a></h1>
+  </header>
+  <section>
+    <div class="welcome-wrapper">
+      <div class="text">
+        <h1>Welcome to Social</h1>
+        <p>Where conversations matter, connections feel real, and your voice actually counts.</p>
+      </div>
+      <img src="/images/illustration.png" alt="">
+    </div>
+    <div class="form-wrapper">
+      <h1>LOG IN</h1>
+      <form action="/login" method="post">
+        <div class="form-group">
+          <label for="email">EMAIL</label>
+          <div class="input-wrapper">
+            <input value="<%= locals.previousValues?.email || '' %>" id="email" name="email" type="email" required>
+            <% if (locals.authErrors?.email?.length ) { %>
+            <span class="error-message">
+              <%= locals.authErrors.email[0]%>
+            </span>
+            <% } %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">PASSWORD</label>
+          <div class="input-wrapper">
+            <input id="password" name="password" type="password" required>
+            <% if (locals.authErrors?.password?.length ) { %>
+            <span class="error-message">
+              <%= locals.authErrors.password[0]%>
+            </span>
+            <% } %>
+          </div>
+        </div>
+        <button type="submit">Log in</button>
+        <p class="signup-prompt">Don't have an account? <a href="/signup">Sign Up</a></p>
+      </form>
+    </div>
+
+  </section>
+
+</body>
+
+</html>

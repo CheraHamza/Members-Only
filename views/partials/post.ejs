@@ -1,0 +1,21 @@
+<div class="post">
+  <div class="post-header">
+    <img class="user-img" src="/images/user.svg" alt="">
+    <div>
+      <h4 class="name"><%= locals.currentUser && locals.currentUser.membership ? post.author : locals.currentUser && locals.currentUser.id == post.user_id ? post.author : "Anonymous" %></h4>
+      <p class="timestamp"><%= post.timestamp %></p>
+    </div>
+    <% if (locals.currentUser && locals.currentUser.admin) { %>
+    <form action="/delete" method="post">
+      <input type="hidden" name="postId" value="<%= post.id %>">
+      <button class="delete-btn" type="submit">
+        <img src="/images/trash.svg" alt="delete">
+      </button>
+    </form>
+    <% } %>
+  </div>
+  <div class="post-main">
+    <h3><%= post.title %></h3>
+    <p><%= post.content %></p>
+  </div>
+</div>

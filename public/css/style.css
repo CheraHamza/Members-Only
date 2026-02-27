@@ -1,0 +1,692 @@
+@font-face {
+  font-family: "FascinateInline";
+  src: url("/fonts/FascinateInline.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("/fonts/Roboto.ttf") format(truetype);
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto";
+}
+
+html,
+body {
+  width: 100%;
+  height: 100dvh;
+}
+
+.home,
+.signup,
+.login,
+.createPost,
+.error {
+  display: flex;
+  flex-direction: column;
+  background-color: #231c35;
+  background-image: radial-gradient(#334155 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+.signup--header,
+.login--header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ad9cd7, #5b5271, #ad9cd7);
+  padding: 10px;
+}
+.signup--header h1 a,
+.login--header h1 a {
+  text-decoration: none;
+  font-family: "FascinateInline";
+  color: white;
+}
+
+.home header,
+.createPost header,
+.error header {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #5b5271, #ad9cd7);
+  padding: 10px 20px;
+}
+.home header h1 a,
+.createPost header h1 a,
+.error header h1 a {
+  text-decoration: none;
+  font-family: "FascinateInline";
+  color: white;
+}
+.home header .profile,
+.createPost header .profile,
+.error header .profile {
+  margin-left: auto;
+}
+.home header .profile .profile-wrapper,
+.createPost header .profile .profile-wrapper,
+.error header .profile .profile-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.home header .profile .profile-wrapper p.welcome-msg,
+.createPost header .profile .profile-wrapper p.welcome-msg,
+.error header .profile .profile-wrapper p.welcome-msg {
+  font-weight: 300;
+  font-style: italic;
+}
+.home header .profile .profile-btn,
+.createPost header .profile .profile-btn,
+.error header .profile .profile-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.home header .profile .profile-btn:hover img,
+.createPost header .profile .profile-btn:hover img,
+.error header .profile .profile-btn:hover img {
+  opacity: 0.8;
+}
+.home header .profile .profile-btn img,
+.createPost header .profile .profile-btn img,
+.error header .profile .profile-btn img {
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.2s ease-in-out;
+}
+.home header .dropdown,
+.createPost header .dropdown,
+.error header .dropdown {
+  position: relative;
+}
+.home header .dropdown .dropdown-content,
+.createPost header .dropdown .dropdown-content,
+.error header .dropdown .dropdown-content {
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  position: absolute;
+  right: 0;
+  background-color: #5b5271;
+  color: white;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 20px 10px;
+  border-radius: 5px;
+}
+.home header .dropdown .dropdown-content .dropdown-group,
+.createPost header .dropdown .dropdown-content .dropdown-group,
+.error header .dropdown .dropdown-content .dropdown-group {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.home header .dropdown .dropdown-content .dropdown-group p.title,
+.createPost header .dropdown .dropdown-content .dropdown-group p.title,
+.error header .dropdown .dropdown-content .dropdown-group p.title {
+  font-weight: 400;
+}
+.home header .dropdown .dropdown-content .dropdown-group p.value,
+.createPost header .dropdown .dropdown-content .dropdown-group p.value,
+.error header .dropdown .dropdown-content .dropdown-group p.value {
+  font-size: 12;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.801);
+}
+.home header .dropdown .dropdown-content button,
+.createPost header .dropdown .dropdown-content button,
+.error header .dropdown .dropdown-content button {
+  width: 100%;
+  color: white;
+  background-color: #b31818;
+  border: 2px #b31818 solid;
+  border-radius: 5px;
+  padding: 12px 30px;
+  font-weight: 500;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.home header .dropdown .dropdown-content button:hover,
+.createPost header .dropdown .dropdown-content button:hover,
+.error header .dropdown .dropdown-content button:hover {
+  background-color: white;
+  color: #b31818;
+}
+.home header .dropdown.active .dropdown-content,
+.createPost header .dropdown.active .dropdown-content,
+.error header .dropdown.active .dropdown-content {
+  display: flex;
+}
+.home header .authBtns,
+.createPost header .authBtns,
+.error header .authBtns {
+  display: flex;
+  gap: 20px;
+  margin-left: auto;
+}
+.home header .authBtns button,
+.createPost header .authBtns button,
+.error header .authBtns button {
+  display: flex;
+  background-color: transparent;
+  border: none;
+}
+.home header .authBtns button:hover a,
+.createPost header .authBtns button:hover a,
+.error header .authBtns button:hover a {
+  color: #231c35;
+  background-color: white;
+}
+.home header .authBtns button a,
+.createPost header .authBtns button a,
+.error header .authBtns button a {
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  background-color: #231c35;
+  color: white;
+  border-radius: 5px;
+  border: 2px solid #231c35;
+  font-weight: 500;
+  padding: 10px 20px;
+  transition: all 0.2s ease-in-out;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+}
+.home section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.home section .create-wrapper {
+  display: flex;
+  justify-content: end;
+  margin-top: 5px;
+  margin-bottom: -10px;
+}
+.home section .create-wrapper button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+}
+.home section .create-wrapper button:hover a {
+  color: #231c35;
+  background-color: white;
+}
+.home section .create-wrapper button a {
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: white;
+  background-color: #231c35;
+  border: 2px solid white;
+  padding: 15px 25px;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.2s ease-in-out;
+}
+.home section .login-prompt {
+  color: white;
+  font-weight: 300;
+  font-style: italic;
+  margin-top: 5px;
+  margin-bottom: -10px;
+}
+.home section .login-prompt a {
+  color: rgba(255, 0, 0, 0.727);
+}
+.home section .posts-wrapper {
+  width: min(90%, 700px);
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding-block: 20px;
+}
+.home section .posts-wrapper .post {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: #334155;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  padding: 20px 20px 40px;
+}
+.home section .posts-wrapper .post .post-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.home section .posts-wrapper .post .post-header .user-img {
+  width: 50px;
+  height: 50px;
+}
+.home section .posts-wrapper .post .post-header p.timestamp {
+  font-weight: 300;
+}
+.home section .posts-wrapper .post .post-header form {
+  margin-left: auto;
+}
+.home section .posts-wrapper .post .post-header form .delete-btn {
+  width: 25px;
+  height: 25px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.home section .posts-wrapper .post .post-header form .delete-btn:hover img {
+  filter: brightness(0.9);
+}
+.home section .posts-wrapper .post .post-header form .delete-btn img {
+  width: 100%;
+  height: 100%;
+  filter: brightness(0.7);
+  transition: filter 0.1s ease-in-out;
+}
+.home section .posts-wrapper .post .post-main {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.home section .posts-wrapper .post .post-main p {
+  color: rgba(0, 0, 0, 0.701);
+}
+.home section .posts-wrapper .zero-posts {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 30px 20px;
+  opacity: 0.7;
+}
+.home section .posts-wrapper .zero-posts h2 {
+  color: rgb(255, 255, 255);
+  font-weight: 300;
+  font-style: italic;
+}
+.home section .posts-wrapper .zero-posts img {
+  width: min(80%, 300px);
+}
+
+.signup,
+.login {
+  display: flex;
+  flex-direction: column;
+}
+.signup section,
+.login section {
+  display: flex;
+  flex: 1;
+}
+.signup section .welcome-wrapper,
+.login section .welcome-wrapper {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 30px 15px;
+  color: white;
+}
+.signup section .welcome-wrapper .text,
+.login section .welcome-wrapper .text {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.signup section .welcome-wrapper h1,
+.login section .welcome-wrapper h1 {
+  font-family: "FascinateInline";
+}
+.signup section .welcome-wrapper p,
+.login section .welcome-wrapper p {
+  font-size: 1.5rem;
+  font-weight: 100;
+  font-style: italic;
+}
+.signup section .welcome-wrapper img,
+.login section .welcome-wrapper img {
+  width: min(70%, 350px);
+  align-self: center;
+}
+.signup section .form-wrapper,
+.login section .form-wrapper {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+  padding: 30px 30px;
+  background-color: white;
+}
+.signup section .form-wrapper h1,
+.login section .form-wrapper h1 {
+  font-family: "FascinateInline";
+  color: #5b5271;
+}
+.signup section .form-wrapper form,
+.login section .form-wrapper form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+.signup section .form-wrapper form .form-group,
+.login section .form-wrapper form .form-group {
+  width: 300px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.signup section .form-wrapper form .form-group .input-wrapper,
+.login section .form-wrapper form .form-group .input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  width: 300px;
+  max-width: 100%;
+}
+.signup section .form-wrapper form .form-group .input-wrapper .error-message,
+.login section .form-wrapper form .form-group .input-wrapper .error-message {
+  font-size: 12px;
+  color: red;
+  font-weight: 300;
+}
+.signup section .form-wrapper form .form-group .input-wrapper .error-message::before,
+.login section .form-wrapper form .form-group .input-wrapper .error-message::before {
+  content: "*";
+}
+.signup section .form-wrapper form .form-group label,
+.login section .form-wrapper form .form-group label {
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+.signup section .form-wrapper form .form-group input,
+.login section .form-wrapper form .form-group input {
+  width: 100%;
+  padding: 8px;
+  font-size: 17px;
+  border: none;
+  box-shadow: 0px 0px 2px 0px rgb(148, 148, 148);
+  outline-color: #ad9cd7;
+  outline-width: 15px;
+}
+.signup section .form-wrapper form button,
+.login section .form-wrapper form button {
+  width: fit-content;
+  background-color: #5b5271;
+  color: white;
+  border: 2px #5b5271 solid;
+  border-radius: 5px;
+  padding: 12px 30px;
+  font-weight: 500;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.signup section .form-wrapper form button:hover,
+.login section .form-wrapper form button:hover {
+  background-color: white;
+  color: #5b5271;
+}
+.signup section .form-wrapper form p.login-prompt,
+.signup section .form-wrapper form p.signup-prompt,
+.login section .form-wrapper form p.login-prompt,
+.login section .form-wrapper form p.signup-prompt {
+  font-size: 0.9rem;
+}
+.signup section .form-wrapper form p.login-prompt a,
+.signup section .form-wrapper form p.signup-prompt a,
+.login section .form-wrapper form p.login-prompt a,
+.login section .form-wrapper form p.signup-prompt a {
+  color: #5b5271;
+}
+@media (max-width: 768px) {
+  .signup section,
+  .login section {
+    flex-direction: column;
+  }
+  .signup section .welcome-wrapper,
+  .signup section .form-wrapper,
+  .login section .welcome-wrapper,
+  .login section .form-wrapper {
+    width: 100%;
+  }
+  .signup section .welcome-wrapper,
+  .login section .welcome-wrapper {
+    padding: 20px 15px;
+  }
+  .signup section .welcome-wrapper p,
+  .login section .welcome-wrapper p {
+    font-size: 1.2rem;
+  }
+  .signup section .form-wrapper,
+  .login section .form-wrapper {
+    align-items: center;
+    padding: 20px;
+  }
+  .signup section .form-wrapper form,
+  .login section .form-wrapper form {
+    width: min(90%, 350px);
+  }
+  .signup section .form-wrapper form .form-group,
+  .login section .form-wrapper form .form-group {
+    width: 100%;
+  }
+}
+
+.signup section .form-wrapper form .group-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+.signup section .form-wrapper form .group-wrapper > div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+@media (max-width: 1400px) {
+  .signup section .form-wrapper form .group-wrapper {
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+  }
+}
+.signup section .form-wrapper form .form-group .membership-toggle,
+.signup section .form-wrapper form .form-group .admin-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.createPost {
+  display: flex;
+  flex-direction: column;
+}
+.createPost section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+.createPost section > div {
+  width: min(90%, 400px);
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 30px;
+}
+.createPost section h1 {
+  font-family: "FascinateInline";
+  text-align: center;
+  color: #5b5271;
+}
+.createPost section form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.createPost section form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.createPost section form .form-group .input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.createPost section form .form-group .input-wrapper .error-message {
+  font-size: 13px;
+  color: red;
+  font-weight: 300;
+}
+.createPost section form .form-group .input-wrapper .error-message::before {
+  content: "*";
+}
+.createPost section form .form-group label {
+  font-weight: 300;
+}
+.createPost section form .form-group input,
+.createPost section form .form-group textarea {
+  padding: 8px;
+  font-size: 17px;
+  border: none;
+  box-shadow: 0px 0px 2px 0px rgb(148, 148, 148);
+  outline-color: #ad9cd7;
+  outline-width: 15px;
+}
+.createPost section form .form-group textarea {
+  resize: none;
+}
+.createPost section form button {
+  flex: 1;
+  border: 2px #5b5271 solid;
+  border-radius: 5px;
+  padding: 12px 30px;
+  font-weight: 500;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.createPost section form button.back {
+  background-color: white;
+  color: #5b5271;
+}
+.createPost section form button.back:hover {
+  background-color: #5b5271;
+  color: white;
+}
+.createPost section form button.submit {
+  background-color: #5b5271;
+  color: white;
+}
+.createPost section form button.submit:hover {
+  background-color: white;
+  color: #5b5271;
+}
+
+.error {
+  display: flex;
+}
+.error section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.error section .error-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  color: white;
+}
+.error section .error-wrapper .message {
+  font-weight: 300;
+  font-style: italic;
+}
+.error section .error-wrapper a {
+  color: rgba(255, 0, 0, 0.727);
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 20px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 12px;
+  width: 12px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #ad9cd7;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #ad9cd7;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(10px);
+  -ms-transform: translateX(10px);
+  transform: translateX(10px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/*# sourceMappingURL=style.css.map */

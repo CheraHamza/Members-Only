@@ -4,11 +4,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Club</title>
+  <title>Social</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/x-icon" href="images/favicon.svg">
 </head>
 
-<body>
-  <h1>Welcome to The Club</h1>
+<body class="home">
+  <%- include('partials/header') %>
+  <section>
+    <div class="posts-wrapper">
+      <% if (locals.currentUser) { %>
+      <div class="create-wrapper">
+        <button><a href="/post">Create Post</a></button>
+      </div>
+      <% } else { %>
+      <p class="login-prompt">Please <a href="/login">log in</a> to create a post.</p>
+      <% } %>
+      <% if (locals.posts && locals.posts.length > 0) { %>
+      <% locals.posts.forEach(post => { %>
+      <%- include("partials/post", { post: post }) %>
+      <% }); %>
+      <% } else { %>
+      <div class="zero-posts">
+        <img src="images/illustration.png" alt="">
+        <h2>No posts yet, be the first!</h2>
+      </div>
+
+      <% } %>
+    </div>
+
+  </section>
 </body>
 
 </html>

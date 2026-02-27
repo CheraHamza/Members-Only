@@ -1,0 +1,65 @@
+<header class="header">
+  <h1><a href="/">Social</a></h1>
+  <% if (locals.currentUser) { %>
+  <div class="profile dropdown">
+    <div class="profile-wrapper">
+      <p class="welcome-msg"><%= locals.currentUser? "Hello, " + currentUser.firstname : "Guest" %></p>
+      <button class="profile-btn drop-btn">
+        <img src="/images/user.svg" alt="">
+      </button>
+    </div>
+
+    <div class="dropdown-content">
+      <h3>Profile</h3>
+      <div class="dropdown-group">
+        <p class="title">Full Name</p>
+        <p class="value"><%= !locals.currentUser? "None": currentUser.firstname && currentUser.lastname ? currentUser.firstname + " " + currentUser.lastname : "No Name Provided" %></p>
+      </div>
+      <div class="dropdown-group">
+        <p class="title">Email</p>
+        <p class="value"><%= locals.currentUser? currentUser.email: "" %></p>
+      </div>
+      <div class="dropdown-group">
+        <p class="title">Membership</p>
+        <p class="value"><%= !locals.currentUser? "None": currentUser.membership ? "Premium" : "Free" %></p>
+      </div>
+      <div class="dropdown-group">
+        <p class="title">Admin Privileges</p>
+        <p class="value"><%= !locals.currentUser? "None": currentUser.admin ? "Included" : "None" %></p>
+      </div>
+      <form action="/logout" method="post">
+        <button type="submit">Logout</button>
+      </form>
+    </div>
+  </div>
+
+  <% } else { %>
+
+  <div class="authBtns">
+    <button><a href="/signup">Sign up</a></button>
+    <button><a href="/login">Log in</a></button>
+  </div>
+
+  <% } %>
+</header>
+
+<script>
+  // Get the dropdown button and content
+  const dropdown = document.querySelector('.dropdown');
+  const dropdownBtn = document.querySelector('.drop-btn')
+
+  if (dropdown && dropdownBtn) {
+    // Toggle the dropdown content when the button is clicked
+    dropdownBtn.addEventListener('click', (event) => {
+      event.stopPropagation();
+      dropdown.classList.toggle('active');
+    });
+
+    // Close the dropdown if the user clicks outside of it
+    window.addEventListener('click', (event) => {
+      if (!event.target.closest('.dropdown')) {
+        dropdown.classList.remove('active');
+      }
+    });
+  }
+</script>

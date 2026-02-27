@@ -1,32 +1,35 @@
 {
-  "name": "members-only",
-  "version": "1.0.0",
-  "description": "",
-  "homepage": "https://github.com/CheraHamza/Members-Only#readme",
-  "bugs": {
-    "url": "https://github.com/CheraHamza/Members-Only/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/CheraHamza/Members-Only.git"
-  },
-  "license": "ISC",
-  "author": "Hamza Chera",
-  "type": "module",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "dependencies": {
-    "bcryptjs": "^3.0.3",
-    "dotenv": "^17.3.1",
-    "ejs": "^4.0.1",
-    "express": "^5.2.1",
-    "express-session": "^1.19.0",
-    "express-validator": "^7.3.1",
-    "passport": "^0.7.0",
-    "passport-local": "^1.0.0",
-    "pg": "^8.18.0",
-    "sass": "^1.97.3"
-  }
+	"name": "members-only",
+	"version": "1.0.0",
+	"description": "",
+	"homepage": "https://github.com/CheraHamza/Members-Only#readme",
+	"bugs": {
+		"url": "https://github.com/CheraHamza/Members-Only/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/CheraHamza/Members-Only.git"
+	},
+	"license": "ISC",
+	"author": "Hamza Chera",
+	"type": "module",
+	"main": "app.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"sass": "sass --watch src/sass:public/css"
+	},
+	"dependencies": {
+		"bcryptjs": "^3.0.3",
+		"connect-pg-simple": "^10.0.0",
+		"date-fns": "^4.1.0",
+		"dotenv": "^17.3.1",
+		"ejs": "^4.0.1",
+		"express": "^5.2.1",
+		"express-session": "^1.19.0",
+		"express-validator": "^7.3.1",
+		"passport": "^0.7.0",
+		"passport-local": "^1.0.0",
+		"pg": "^8.18.0",
+		"sass": "^1.97.3"
+	}
 }
