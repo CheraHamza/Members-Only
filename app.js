@@ -46,7 +46,7 @@ app.use((err, req, res, next) => {
 	});
 });
 
-app.listen(3000, "0.0.0.0", (error) => {
+app.listen(3000, (error) => {
 	if (error) {
 		throw error;
 	}
