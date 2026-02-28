@@ -114,6 +114,7 @@ body {
   gap: 10px;
   position: absolute;
   right: 0;
+  z-index: 99;
   background-color: #5b5271;
   color: white;
   min-width: 200px;
